@@ -1,18 +1,19 @@
-import CategoriesScreen from "../screens/CategoriesScreen";
-import {Platform, Pressable, View} from "react-native";
+import {StyleSheet, Text, View, Platform, Pressable} from 'react-native';
 
-const CategoryGridTile = ({title, color}) => {
-    <View style={styles.gridItem}>
+const CategoryGridTile = ({title, color, onPress}) => {
+    return (<View style={styles.gridItem}>
         <Pressable android_ripple={{color: '#ccc'}}
-                   style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}>
+                   style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}
+        onPress={onPress}
+        >
             <View style={[styles.innerContainer, {backgroundColor: color}]}>
                 <Text style={styles.title}>{title}</Text>
             </View>
         </Pressable>
-    </View>
+    </View>)
 }
 
-export default CategoriesScreen
+export default CategoryGridTile
 
 const styles = StyleSheet.create({
     gridItem: {
