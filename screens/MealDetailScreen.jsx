@@ -4,20 +4,24 @@ import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/Subtitle";
 import List from "../components/List";
 import {useLayoutEffect} from "react";
+import IconButton from "../components/IconButton";
 
 const MealDetailScreen = ({route, navigation}) => {
     const mealId = route.params.mealId; // or const route = useRoute()
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
     const headerButtonPressHandler = () => {
-      console.log("MealDetailScreen", mealId);
+        console.log("MealDetailScreen", mealId);
     }
-    
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
                 return (
-                    <Button title={'Tap me!'} onPress={headerButtonPressHandler}/>
+                    <IconButton icon={'star'}
+                                color={"white"}
+                                onPress={headerButtonPressHandler}
+                    />
                 )
             }
         })
@@ -50,7 +54,7 @@ export default MealDetailScreen
 
 const styles = StyleSheet.create({
     rootContainer: {
-       marginBottom: 32,
+        marginBottom: 32,
     },
     image: {
         width: "100%",
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     listOuterContainer: {
-      alignItems: "center",
+        alignItems: "center",
     },
     listContainer: {
         width: "80%",
