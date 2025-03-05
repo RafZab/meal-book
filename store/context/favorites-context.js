@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import {createContext, useContext, useState} from "react";
 
 const FavoritesContext = createContext({
     ids: [],
@@ -26,6 +26,14 @@ const FavoritesContextProvider = ({children}) => {
     }
 
     return <FavoritesContext.Provider value={values}>{children}</FavoritesContext.Provider>
+}
+
+export const useFavorites = () => {
+    const context = useContext(FavoritesContext);
+    if (context == null) {
+        throw new Error("useFavorites must be defined");
+    }
+    return context;
 }
 
 export default FavoritesContextProvider
